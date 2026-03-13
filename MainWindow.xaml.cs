@@ -1,34 +1,26 @@
-﻿public partial class MainWindow : Window
+﻿using System;
+using System.Windows;
+
+namespace LogManagerApp
 {
-    private MainViewModel vm;
-
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
 
-        vm = new MainViewModel();
-        DataContext = vm;
+            // лог при запуске
+            AddLog("Приложение запущено");
+        }
 
-        vm.AddMessage(MessageType.Information, "Программа запущена");
-        vm.AddMessage(MessageType.Warning, "Низкий уровень памяти");
-        vm.AddMessage(MessageType.Error, "Ошибка подключения");
+        private void AddLog(string message)
+        {
+            Logs.Items.Add($"{DateTime.Now:HH:mm:ss} - {message}");
+        }
+
+        private void AddLog_Click(object sender, RoutedEventArgs e)
+        {
+            AddLog("Добавлено новое сообщение");
+        }
     }
-    private void SaveButton_Click(object sender, RoutedEventArgs e)
-{
-    var dlg = new Microsoft.Win32.SaveFileDialog
-    {
-        FileName = "log",
-        DefaultExt = ".txt",
-        Filter = "Text documents (.txt)|*.txt"
-    };
-
-    bool? result = dlg.ShowDialog();
-
-    if (result == true)
-    {
-        string filename = dlg.FileName;
-        vm.LogManager.SaveToFile(filename);
-        MessageBox.Show("Файл сохранён!");
-    }
-}
 }
