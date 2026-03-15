@@ -1,23 +1,27 @@
+using System;
 using System.Collections.ObjectModel;
+using LogManagerApp.Models;
 
-public class MainViewModel
+namespace LogManagerApp.ViewModels
 {
-    private LogManager logManager;
-    public LogManager LogManager => logManager;
-
-    public ObservableCollection<LogMessage> Messages { get; set; }
-
-    public MainViewModel()
+    public class MainViewModel
     {
-        logManager = new LogManager();
-        Messages = new ObservableCollection<LogMessage>();
-    }
+        private LogManager manager = new LogManager();
 
-    public void AddMessage(MessageType type, string text)
-    {
-        var message = new LogMessage(type, DateTime.Now, text);
+        public ObservableCollection<LogMessage> Logs { get; set; }
+            = new ObservableCollection<LogMessage>();
 
-        logManager.AddMessage(message);
-        Messages.Add(message);
+        public void AddMessage(MessageType type)
+        {
+            LogMessage message = new LogMessage(type, DateTime.Now, type.ToString());
+
+            manager.Add(message);
+            Logs.Add(message);
+        }
+
+        public void SaveLogs()
+        {
+            manager.Save("logs.txt");
+        }
     }
 }

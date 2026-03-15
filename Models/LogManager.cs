@@ -1,55 +1,59 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
-public class LogManager
+namespace LogManagerApp.Models
 {
-    private List<LogMessage> messages;
-
-    public LogManager()
+    public class LogManager
     {
-        messages = new List<LogMessage>();
-    }
+        private List<LogMessage> messages = new List<LogMessage>();
 
-    public int Count => messages.Count;
+        public int Count => messages.Count;
 
-    public LogMessage this[int index]
-    {
-        get { return messages[index]; }
-        set { messages[index] = value; }
-    }
-
-    public void AddMessage(LogMessage message)
-    {
-        messages.Add(message);
-    }
-
-    public List<LogMessage> GetMessagesByType(MessageType type)
-    {
-        return messages.Where(m => m.Type == type).ToList();
-    }
-
-    public List<LogMessage> GetMessagesByTimeRange(DateTime start, DateTime end)
-    {
-        return messages
-            .Where(m => m.DateTime >= start && m.DateTime <= end)
-            .ToList();
-    }
-
-    public void SaveToFile(string path)
-    {
-        using (StreamWriter writer = new StreamWriter(path))
+        public LogMessage this[int index]
         {
-            foreach (var msg in messages)
-            {
-                writer.WriteLine($"{msg.DateTime} [{msg.Type}] {msg.Text}");
-            }
+            get => messages[index];
+            set => messages[index] = value;
         }
-    }
 
-    public List<LogMessage> GetAll()
-    {
-        return new List<LogMessage>(messages);
+        public void Add(LogMessage message)
+        {
+            messages.Add(message);
+        }
+
+        public List<LogMessage> GetByType(MessageType type)
+        {
+            List<LogMessage> result = new List<LogMessage>();
+
+            foreach (var m in messages)
+                if (m.Type == type)
+                    result.Add(m);
+
+            return result;
+        }
+
+        public List<LogMessage> GetByDateRange(DateTime start, DateTime end)
+        {
+            List<LogMessage> result = new List<LogMessage>();
+
+            foreach (var m in messages)
+                if (m.Time >= start && m.Time <= end)
+                    result.Add(m);
+
+            return result;
+        }
+
+        public void Save(string path)
+        {
+            using StreamWriter writer = new StreamWriter(path);
+
+            foreach (var m in messages)
+                writer.WriteLine(m.ToString());
+        }
+
+        public List<LogMessage> GetAll()
+        {
+            return messages;
+        }
     }
 }

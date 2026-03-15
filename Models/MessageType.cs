@@ -1,6 +1,9 @@
-public enum MessageType
+namespace LogManagerApp.Models
 {
-    Error,
-    Warning,
-    Information
+    public enum MessageType
+    {
+        Info,
+        Warning,
+        Error
+    }
 }

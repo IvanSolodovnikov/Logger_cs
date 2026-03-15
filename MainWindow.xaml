@@ -5,17 +5,32 @@
 
     <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Height="40">
 
-        <Button Content="Добавить лог"
-                Height="30"
-                Click="AddLog_Click"/>
+            <Button Content="Info"
+                    Click="Info_Click"
+                    Width="80"
+                    Margin="5"/>
 
-        <ListBox x:Name="Logs"
-                 Grid.Row="1"/>
+            <Button Content="Warning"
+                    Click="Warning_Click"
+                    Width="80"
+                    Margin="5"/>
+
+            <Button Content="Error"
+                    Click="Error_Click"
+                    Width="80"
+                    Margin="5"/>
+
+            <Button Content="Save"
+                    Click="Save_Click"
+                    Width="80"
+                    Margin="5"/>
+
+        </StackPanel>
+
+        <ListBox ItemsSource="{Binding Logs}"
+                 Margin="0,40,0,0"/>
 
     </Grid>
 

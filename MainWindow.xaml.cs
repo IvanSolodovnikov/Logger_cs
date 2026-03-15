@@ -1,26 +1,37 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
+using LogManagerApp.ViewModels;
+using LogManagerApp.Models;
 
 namespace LogManagerApp
 {
     public partial class MainWindow : Window
     {
+        MainViewModel vm = new MainViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
-
-            // лог при запуске
-            AddLog("Приложение запущено");
+            DataContext = vm;
         }
 
-        private void AddLog(string message)
+        private void Info_Click(object sender, RoutedEventArgs e)
         {
-            Logs.Items.Add($"{DateTime.Now:HH:mm:ss} - {message}");
+            vm.AddMessage(MessageType.Info);
         }
 
-        private void AddLog_Click(object sender, RoutedEventArgs e)
+        private void Warning_Click(object sender, RoutedEventArgs e)
         {
-            AddLog("Добавлено новое сообщение");
+            vm.AddMessage(MessageType.Warning);
+        }
+
+        private void Error_Click(object sender, RoutedEventArgs e)
+        {
+            vm.AddMessage(MessageType.Error);
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            vm.SaveLogs();
         }
     }
 }

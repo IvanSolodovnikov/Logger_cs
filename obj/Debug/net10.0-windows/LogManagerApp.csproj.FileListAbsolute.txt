@@ -3,8 +3,6 @@ H:\вгу_гдз\3_курс\инфтех\LogManagerApp\bin\Debug\net10.0-windows
 H:\вгу_гдз\3_курс\инфтех\LogManagerApp\bin\Debug\net10.0-windows\LogManagerApp.runtimeconfig.json
 H:\вгу_гдз\3_курс\инфтех\LogManagerApp\bin\Debug\net10.0-windows\LogManagerApp.dll
 H:\вгу_гдз\3_курс\инфтех\LogManagerApp\bin\Debug\net10.0-windows\LogManagerApp.pdb
-H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\MainWindow.baml
-H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\MainWindow.g.cs
 H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\App.g.cs
 H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\LogManagerApp_MarkupCompile.cache
 H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\LogManagerApp.g.resources
@@ -18,3 +16,5 @@ H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows
 H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\LogManagerApp.pdb
 H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\LogManagerApp.genruntimeconfig.cache
 H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\ref\LogManagerApp.dll
+H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\MainWindow.baml
+H:\вгу_гдз\3_курс\инфтех\LogManagerApp\obj\Debug\net10.0-windows\MainWindow.g.cs
