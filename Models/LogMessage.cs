@@ -1,13 +1,20 @@
-public struct LogMessage
-{
-    public MessageType Type { get; set; }
-    public DateTime DateTime { get; set; }
-    public string Text { get; set; }
+using System;
 
-    public LogMessage(MessageType type, DateTime dateTime, string text)
+namespace LogManagerApp.Models
+{
+    public enum LogType
     {
-        Type = type;
-        DateTime = dateTime;
-        Text = text;
+        Error,
+        Warning,
+        Info
+    }
+
+    public struct LogMessage
+    {
+        public LogType Type { get; set; }
+        public DateTime DateTime { get; set; }
+        public string Text { get; set; }
+
+        public string DisplayText => $"{DateTime:G} [{Type}] {Text}";
     }
 }

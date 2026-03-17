@@ -3,53 +3,40 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-public class LogManager
+namespace LogManagerApp.Models
 {
-    private List<LogMessage> messages;
-
-    public LogManager()
+    public class LogManager
     {
-        messages = new List<LogMessage>();
-    }
+        private List<LogMessage> _messages = new List<LogMessage>();
 
-    public int Count => messages.Count;
+        public LogMessage this[int index] => _messages[index];
 
-    public LogMessage this[int index]
-    {
-        get { return messages[index]; }
-        set { messages[index] = value; }
-    }
+        public int Count => _messages.Count;
 
-    public void AddMessage(LogMessage message)
-    {
-        messages.Add(message);
-    }
-
-    public List<LogMessage> GetMessagesByType(MessageType type)
-    {
-        return messages.Where(m => m.Type == type).ToList();
-    }
-
-    public List<LogMessage> GetMessagesByTimeRange(DateTime start, DateTime end)
-    {
-        return messages
-            .Where(m => m.DateTime >= start && m.DateTime <= end)
-            .ToList();
-    }
-
-    public void SaveToFile(string path)
-    {
-        using (StreamWriter writer = new StreamWriter(path))
+        public void Add(LogType type, DateTime dateTime, string text)
         {
-            foreach (var msg in messages)
+            _messages.Add(new LogMessage { Type = type, DateTime = dateTime, Text = text });
+        }
+
+        public List<LogMessage> GetByType(LogType type)
+        {
+            return _messages.Where(m => m.Type == type).ToList();
+        }
+
+        public List<LogMessage> GetByDateRange(DateTime from, DateTime to)
+        {
+            return _messages.Where(m => m.DateTime >= from && m.DateTime <= to).ToList();
+        }
+
+        public void SaveToFile(string path)
+        {
+            using (StreamWriter sw = new StreamWriter(path))
             {
-                writer.WriteLine($"{msg.DateTime} [{msg.Type}] {msg.Text}");
+                foreach (var msg in _messages)
+                {
+                    sw.WriteLine($"{msg.DateTime:G} [{msg.Type}] {msg.Text}");
+                }
             }
         }
-    }
-
-    public List<LogMessage> GetAll()
-    {
-        return new List<LogMessage>(messages);
     }
 }
