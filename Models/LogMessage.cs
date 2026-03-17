@@ -2,13 +2,6 @@ using System;
 
 namespace LogManagerApp.Models
 {
-    public enum LogType
-    {
-        Error,
-        Warning,
-        Info
-    }
-
     public struct LogMessage
     {
         public LogType Type { get; set; }

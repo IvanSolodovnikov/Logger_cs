@@ -1,6 +1,6 @@
 namespace LogManagerApp.Models
 {
-    public enum MessageType
+    public enum LogType
     {
         Info,
         Warning,

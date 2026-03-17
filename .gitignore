@@ -1,0 +1,15 @@
+# Папки сборки и временные файлы Visual Studio
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Файлы логов (обычно их не хранят в git, они генерируются программой)
+logs.txt
+*.log
+
+# Резервные копии
+backup/
+*.bak
