@@ -16,7 +16,7 @@ namespace LogManagerApp.Views
 
         private void AddInfo_Click(object sender, RoutedEventArgs e)
         {
-            _vm.AddMessage(LogType.Info, "Новое информационное сообщение");
+            _vm.AddMessage(LogType.Info, "Новое сообщение Info");
         }
 
         private void AddWarning_Click(object sender, RoutedEventArgs e)
@@ -31,9 +31,18 @@ namespace LogManagerApp.Views
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            string path = "logs.txt";
-            _vm.SaveLogs(path);
-            MessageBox.Show($"Логи сохранены в {path}");
+            _vm.SaveLogs("logs.txt");
+            MessageBox.Show("Сохранено!");
+        }
+
+        private void Filter_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.ApplyFilter();
+        }
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.ResetFilter();
         }
     }
 }
